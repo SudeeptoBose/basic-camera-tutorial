@@ -1,12 +1,12 @@
-import { GizmoHelper, GizmoViewport, OrbitControls } from "@react-three/drei"
 import { Canvas, useFrame} from "@react-three/fiber"
 import { easing } from 'maath'
 import { Model } from "./Model"
+import Footer from "./Footer"
 
-
-function Scene(){
-	const rotationFactor = 0.2
+function Scene()  {
 	
+	const rotationFactor = 0.2
+
 	useFrame((state, delta)=>{
 		easing.dampE(state.camera.rotation, [state.pointer.y * rotationFactor, -state.pointer.x * rotationFactor, 0], 0.25, delta)
 	})
@@ -18,15 +18,13 @@ function Scene(){
 	)
 }
 
-function App() {
+function App()	{
 	return (
 		<>
 			<Canvas>
 				<Scene/>
-				<GizmoHelper alignment="bottom-right" margin={[80, 80]}>
-					<GizmoViewport axisColors={['red', 'green', 'blue']} labelColor="white" />
-				</GizmoHelper>
 			</Canvas>
+			<Footer/>
 		</>
 	)
 }
